@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class StringFromNumber {
-private long numberForChange;
 
     public StringFromNumber() {
-        this.numberForChange = numberForChange;
     }
 
     public String numberToString(long numberForChange) {
