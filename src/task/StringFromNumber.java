@@ -56,35 +56,34 @@ private long numberForChange;
         int lev = segments.size() - 1;
         for (int i = 0; i <segments.size(); i++) {// перебираем сегменты
             int selectForm = Integer.valueOf(forms[lev][3]);// определяем род
-            int currentSegment = Integer.valueOf( segments.get(i).toString() );// текущий сегмент
-            if (currentSegment == 0 && lev > 1) {// если сегмент ==0 И не последний уровень(там Units)
+            int currentSegment = Integer.valueOf(segments.get(i).toString());// текущий сегмент
+            if (currentSegment == 0 && lev > 1) {// если сегмент == 0 И не последний уровень(там Units)
                 lev--;
                 continue;
             }
-            String rs = String.valueOf(currentSegment); // число в строку
+            String currentSegmentAsString = String.valueOf(currentSegment); // число в строку
             // нормализация
-            if (rs.length()==1) rs = "00"+rs;// два нулика в префикс?
-            if (rs.length()==2) rs = "0"+rs; // или лучше один?
+            if (currentSegmentAsString.length() == 1) currentSegmentAsString = "00" + currentSegmentAsString;// два нулика в префикс?
+            if (currentSegmentAsString.length() == 2) currentSegmentAsString = "0" + currentSegmentAsString; // или лучше один?
             // получаем циферки для анализа
-            int r1 = (int)Integer.valueOf( rs.substring( 0,1) ); //первая цифра
-            int r2 = (int)Integer.valueOf( rs.substring(1,2) ); //вторая
-            int r3 = (int)Integer.valueOf( rs.substring(2,3) ); //третья
-            int r22= (int)Integer.valueOf( rs.substring(1,3) ); //вторая и третья
+            int r1 = Integer.valueOf(currentSegmentAsString.substring(0,1)); //первая цифра
+            int r2 = Integer.valueOf(currentSegmentAsString.substring(1,2)); //вторая
+            int r3 = Integer.valueOf(currentSegmentAsString.substring(2,3)); //третья
+            int r22= Integer.valueOf(currentSegmentAsString.substring(1,3)); //вторая и третья
             // Супер-нано-анализатор циферок
-            if (currentSegment>99) stringWithNumber += str100[r1]+" "; // Сотни
-            if (r22>20) {// >20
-                stringWithNumber += str10[r2]+" ";
-                stringWithNumber += str1[ selectForm ][r3]+" ";
+            if (currentSegment > 99) stringWithNumber += str100[r1] + " "; // Сотни
+            if (r22 > 20) {// >20
+                stringWithNumber += str10[r2] + " ";
+                stringWithNumber += str1[selectForm][r3] + " ";
             }
             else { // <=20
-                if (r22>9) stringWithNumber += str11[r22-9]+" "; // 10-20
-                else stringWithNumber += str1[ selectForm ][r3]+" "; // 0-9
+                if (r22 > 9) stringWithNumber += str11[r22-9] + " "; // 10-20
+                else stringWithNumber += str1[ selectForm ][r3] + " "; // 0-9
             }
 
-            stringWithNumber += morph(currentSegment, forms[lev][ 0],forms[lev][1],forms[lev][2])+" ";
+            stringWithNumber += morph(currentSegment, forms[lev][0], forms[lev][1], forms[lev][2]) + " ";
             lev--;
         }
-
         return stringWithNumber;
     }
 
