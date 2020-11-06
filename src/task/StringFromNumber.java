@@ -10,7 +10,7 @@ private long numberForChange;
         this.numberForChange = numberForChange;
     }
 
-    public String numberToString(int numberForChange) {
+    public String numberToString(long numberForChange) {
         // necessary words for creating right form of final number
         String[][] str1 = {
                 {"","один","два","три","четыре","пять","шесть","семь","восемь","девять"},
