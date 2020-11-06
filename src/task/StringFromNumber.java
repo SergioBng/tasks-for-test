@@ -7,13 +7,10 @@ public class StringFromNumber {
 private long numberForChange;
 
     public StringFromNumber() {
-    }
-
-    public StringFromNumber(int numberForChange) {
         this.numberForChange = numberForChange;
     }
 
-    public String numberToString() {
+    public String numberToString(int numberForChange) {
         // necessary words for creating right form of final number
         String[][] str1 = {
                 {"","один","два","три","четыре","пять","шесть","семь","восемь","девять"},
@@ -54,24 +51,28 @@ private long numberForChange;
         }
 
         int lev = segments.size() - 1;
-        for (int i = 0; i <segments.size(); i++) {// перебираем сегменты
-            int selectForm = Integer.valueOf(forms[lev][3]);// определяем род
-            int currentSegment = Integer.valueOf(segments.get(i).toString());// текущий сегмент
-            if (currentSegment == 0 && lev > 1) {// если сегмент == 0 И не последний уровень(там Units)
+        for (int i = 0; i <segments.size(); i++) {// sorting segments
+            int selectForm = Integer.valueOf(forms[lev][3]);//  definition of sort
+            int currentSegment = Integer.valueOf(segments.get(i).toString());
+            if (currentSegment == 0 && lev > 1) {// if segment == 0 and not last level(there Unit)
                 lev--;
                 continue;
             }
-            String currentSegmentAsString = String.valueOf(currentSegment); // число в строку
-            // нормализация
-            if (currentSegmentAsString.length() == 1) currentSegmentAsString = "00" + currentSegmentAsString;// два нулика в префикс?
-            if (currentSegmentAsString.length() == 2) currentSegmentAsString = "0" + currentSegmentAsString; // или лучше один?
-            // получаем циферки для анализа
-            int r1 = Integer.valueOf(currentSegmentAsString.substring(0,1)); //первая цифра
-            int r2 = Integer.valueOf(currentSegmentAsString.substring(1,2)); //вторая
-            int r3 = Integer.valueOf(currentSegmentAsString.substring(2,3)); //третья
-            int r22= Integer.valueOf(currentSegmentAsString.substring(1,3)); //вторая и третья
-            // Супер-нано-анализатор циферок
-            if (currentSegment > 99) stringWithNumber += str100[r1] + " "; // Сотни
+
+            String currentSegmentAsString = String.valueOf(currentSegment); // number in string
+
+            // normalization
+            // two zero in prefix?
+            if (currentSegmentAsString.length() == 1) currentSegmentAsString = "00" + currentSegmentAsString;
+            // or one?
+            if (currentSegmentAsString.length() == 2) currentSegmentAsString = "0" + currentSegmentAsString;
+            // get numbers for analysis
+            int r1 = Integer.valueOf(currentSegmentAsString.substring(0, 1)); //first number
+            int r2 = Integer.valueOf(currentSegmentAsString.substring(1, 2)); //second number
+            int r3 = Integer.valueOf(currentSegmentAsString.substring(2, 3)); //third number
+            int r22= Integer.valueOf(currentSegmentAsString.substring(1, 3)); //second and third
+            // analyse numbers
+            if (currentSegment > 99) stringWithNumber += str100[r1] + " "; // hundreds
             if (r22 > 20) {// >20
                 stringWithNumber += str10[r2] + " ";
                 stringWithNumber += str1[selectForm][r3] + " ";
