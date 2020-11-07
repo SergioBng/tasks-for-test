@@ -32,7 +32,10 @@ public class Reader {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+        return addDegreesInArray(numberInString);
+    }
 
+    public static String[][] addDegreesInArray(String numberInString) {
         String[] formWithoutDegree = {"", "", "", "0"};
 
         String[] arrayOfDegrees = numberInString.split(" ");
@@ -48,7 +51,6 @@ public class Reader {
                 formats[i][j] = arrayOfDegrees[k++];
             }
         }
-
         return formats;
     }
 }
