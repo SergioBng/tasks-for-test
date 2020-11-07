@@ -8,7 +8,7 @@ public class StringFromNumber {
     public StringFromNumber() {
     }
 
-    public String numberToString(long numberForChange) {
+    public String numberToString(long numberForChange, String[][] forms) {
         // necessary words for creating right form of final number
         String[][] str1 = {
                 {"","один","два","три","четыре","пять","шесть","семь","восемь","девять"},
@@ -23,13 +23,13 @@ public class StringFromNumber {
         String[] str10 = {"","десять","двадцать","тридцать","сорок","пятьдесят","шестьдесят", "семьдесят",
                 "восемьдесят","девяносто"};
 
-        String[][] forms = {
-                {"", "", "", "0"},
-                {"тысяча", "тысячи", "тысяч", "1"},
-                {"миллион", "миллиона", "миллионов", "0"},
-                {"миллиард","миллиарда","миллиардов","0"},
-                {"триллион","триллиона","триллионов","0"},
-        };
+//        String[][] forms = {
+//                {"", "", "", "0"},
+//                {"тысяча", "тысячи", "тысяч", "1"},
+//                {"миллион", "миллиона", "миллионов", "0"},
+//                {"миллиард","миллиарда","миллиардов","0"},
+//                {"триллион","триллиона","триллионов","0"},
+//        };
 
         // splitting number on segments
         ArrayList segments = new ArrayList();
@@ -77,7 +77,7 @@ public class StringFromNumber {
             }
             else { // <=20
                 if (r22 > 9) stringWithNumber += str11[r22-9] + " "; // 10-20
-                else stringWithNumber += str1[ selectForm ][r3] + " "; // 0-9
+                else stringWithNumber += str1[selectForm][r3] + " "; // 0-9
             }
 
             stringWithNumber += morph(currentSegment, forms[lev][0], forms[lev][1], forms[lev][2]) + " ";
