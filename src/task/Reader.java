@@ -26,7 +26,7 @@ public class Reader {
         try(FileReader reader = new FileReader("C:\\Users\\user\\Desktop\\dev\\tasks-for-test\\src\\task" +
                 "\\resource\\degree")) {
             int c;
-            while ((c = reader.read()) != -1) {
+            while ((c = reader.read() ) != -1) {
                 numberInString += (char)c;
             }
         } catch (IOException ex) {

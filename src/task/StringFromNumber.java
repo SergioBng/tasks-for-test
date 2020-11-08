@@ -2,6 +2,7 @@ package task;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class StringFromNumber {
 
@@ -24,7 +25,7 @@ public class StringFromNumber {
                 "восемьдесят","девяносто"};
 
         // splitting number on segments
-        ArrayList segments = new ArrayList();
+        List segments = new ArrayList();
         while(numberForChange > 999) {
             long seg = numberForChange / 1000;
             segments.add(numberForChange - (seg * 1000));
