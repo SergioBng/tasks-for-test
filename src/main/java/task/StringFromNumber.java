@@ -76,7 +76,9 @@ public class StringFromNumber {
             stringWithNumber += morph(currentSegment, forms[lev][0], forms[lev][1], forms[lev][2]) + " ";
             lev--;
         }
-        return stringWithNumber;
+
+        // Delete unnecessary spaces and return string
+        return stringWithNumber.trim().replaceAll("\\s+", " ");
     }
 
     public static String morph(long n, String f1, String f2, String f5) {

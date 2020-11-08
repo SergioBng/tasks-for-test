@@ -7,10 +7,11 @@ public class Reader {
     public Reader() {
     }
 
-    public String readNumberFromFile() {
+    public long readNumberFromFile() {
+        long number;
         String numberInString = "";
-        try(FileReader reader = new FileReader("C:\\Users\\user\\Desktop\\dev\\tasks-for-test\\src\\task" +
-                "\\resource\\number")) {
+        try(FileReader reader = new FileReader("C:\\Users\\user\\Desktop\\dev\\tasks-for-test\\" +
+                "src\\main\\resource\\number")) {
              int c;
              while ((c = reader.read()) != -1) {
                  numberInString += (char)c;
@@ -18,13 +19,14 @@ public class Reader {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-        return numberInString;
+        number = Long.parseLong(numberInString);
+        return number;
     }
 
     public String[][] readDegree() {
         String numberInString = "";
-        try(FileReader reader = new FileReader("C:\\Users\\user\\Desktop\\dev\\tasks-for-test\\src\\task" +
-                "\\resource\\degree")) {
+        try(FileReader reader = new FileReader("C:\\Users\\user\\Desktop\\dev\\tasks-for-test\\" +
+                "src\\main\\resource\\degree")) {
             int c;
             while ((c = reader.read() ) != -1) {
                 numberInString += (char)c;
