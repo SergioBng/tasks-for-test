@@ -32,11 +32,11 @@ public class StringFromNumberTest {
     @Test
     public void numberToString() {
         String stringFromNumber1 = stringFromNumber.numberToString(value1, reader.readDegree());
-        System.out.println(stringFromNumber1);
         assertEquals(stringFromNumber1, string1);
+
         String stringFromNumber2 = stringFromNumber.numberToString(value2, reader.readDegree());
-        System.out.println(stringFromNumber2);
         assertEquals(stringFromNumber2, string2);
+
         String stringFromNumber3 = stringFromNumber.numberToString(value3, reader.readDegree());
         assertEquals(stringFromNumber3, string3);
     }
